@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "ChatWork kick out notify",
+    "description": "ChatWork kick out notify",
+    "version": "1.0",
+    "icons": {
+        "32": "assets/img/ico_32.png",
+        "48": "assets/img/ico_32.png"
+    },
+    "browser_action": {
+        "default_icon": "assets/img/ico_32.png",
+        "default_popup": "popup.html",
+        "default_title": "ChatWork kick out notify"
+    },
+    "permissions": [
+        "tabs",
+        "https://chatwork.com/"
+    ],
+    "content_scripts": [{
+        "matches": [
+            "https://www.chatwork.com/*",
+            "https://chatwork.com/*"
+        ],
+        "js": [
+            "assets/js/jquery.min.js",
+            "assets/js/cw.js"
+        ],
+        "run_at": "document_end"
+    }]
+}
