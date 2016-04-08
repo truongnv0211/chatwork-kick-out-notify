@@ -21,12 +21,14 @@ getRoomList = function() {
     var roomList = [];
 
     $("#_roomListItems li[role=listitem]").each(function() {
-        var roomId = $(this).attr("data-rid"),
+        if (!($(this).hasClass("roomUnread") && $(this).hasClass("roomMentionUnread"))) {
+            var roomId = $(this).attr("data-rid"),
             roomName = $(this).attr("aria-label"),
             roomInfo = {};
-        roomInfo[roomId] = roomName;
+            roomInfo[roomId] = roomName;
 
-        roomList.push(roomInfo);
+            roomList.push(roomInfo);
+        }
     });
 
     return JSON.stringify(roomList);
